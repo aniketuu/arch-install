@@ -61,9 +61,9 @@ read -p "install qemu/kvm? [y/N] " VM
 if [[ $VM = "y" ]]; then
   pacman -S qemu dhclient openbsd-netcat virt-viewer libvirt dnsmasq dmidecode ebtables virt-install virt-manager bridge-utils edk2-ovmf
   systemctl enable libvirtd --now
-  mkdir $HOME/.config/libvirt
-  sudo cp -rv /etc/libvirt/libvirt.conf $HOME/.config/libvirt/
-  chown $USER:wheel $HOME/.config/libvirt/libvirt.conf
+  mkdir /home/$SUDO_USER/.config/libvirt
+  sudo cp -rv /etc/libvirt/libvirt.conf /home/$SUDO_USER/.config/libvirt/
+  chown $USER:wheel /home/$SUDO_USER/.config/libvirt/libvirt.conf
   virsh net-autostart default
 fi
 
