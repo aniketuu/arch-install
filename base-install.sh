@@ -67,7 +67,7 @@ sed -i "s/^#greeter-hide-users=false$/greeter-hide-users=false/" /etc/lightdm/li
 # install qemu/kvm
 read -p "install qemu/kvm? [y/N] " VM
 if [[ $VM = "y" ]]; then
-  pacman -S --noconfirm qemu dhclient openbsd-netcat virt-viewer libvirt dnsmasq dmidecode ebtables virt-install virt-manager bridge-utils edk2-ovmf
+  pacman -S qemu dhclient openbsd-netcat virt-viewer libvirt dnsmasq dmidecode ebtables virt-install virt-manager bridge-utils edk2-ovmf
   systemctl enable libvirtd --now
   mkdir ~/.config/libvirt
   sudo cp -rv /etc/libvirt/libvirt.conf ~/.config/libvirt/
