@@ -27,7 +27,7 @@ echo ""
 read -p "want 32-bit packages? [y/N] " BIT32
 if [[ $BIT32 = "y" ]]; then
   vim /etc/pacman.conf
-  acman -Syu --noconfirm
+  pacman -Syu --noconfirm
   LIB32_MESA="lib32-mesa"
   LIB32_NVI_UTLS="lib32-nvidia-utils"
 fi
