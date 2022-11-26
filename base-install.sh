@@ -1,5 +1,5 @@
 printf "\033c" #reset the terminal
-echo "Arch install script"
+echo "Base XFCE4 install script"
 
 if [[ $EUID -ne 0 ]]; then
  echo "Please run as super user"
