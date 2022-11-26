@@ -9,12 +9,12 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 # setup wifi
-read -p "using wifi? [y/N] " wifi
-if [[ $wifi = "y" ]]; then
+read -p "using wifi? [y/N] " WIFI
+if [[ $WIFI = "y" ]]; then
  read -p "SSID: " SSID
- read -p "passphrase: " passphrase
- read -p "device: " device
- iwctl --passphrase $passphrase station $device connect $SSID
+ read -p "passphrase: " PASSPHRS
+ read -p "device: " DEVICE
+ iwctl --passphrase $PASSPHRS station $DEVICE connect $SSID
 fi
 
 sed -i "s/^#ParallelDownloads = 5$/ParallelDownloads = 15/" /etc/pacman.conf
@@ -27,28 +27,28 @@ timedatectl set-ntp true
 echo ""
 lsblk
 echo "Enter the drive: "
-read drive
-cfdisk $drive 
+read DRIVE
+cfdisk /dev/$DRIVE
 
 # FS fmt
 lsblk
 echo ""
 echo "Enter the linux partition: "
-read partition
-mkfs.ext4 $partition
-mount $partition /mnt
+read PRTN
+mkfs.ext4 /dev/$PRTN
+mount /dev/$PRTN /mnt
 
 echo ""
 echo "Enter the EFI partition: "
-read partition
-mkfs.fat -F 32 $partition
-mount --mkdir $partition /mnt/boot
+read PRTN
+mkfs.fat -F 32 /dev/$PRTN
+mount --mkdir /dev/$PRTN /mnt/boot
 
 echo ""
 echo "Enter the swap partition: "
-read partition
-mkswap $partition
-swapon $partition
+read PRTN
+mkswap /dev/$PRTN
+swapon /dev/$PRTN
 
 # base install
 pacstrap -K /mnt base base-devel linux linux-firmware man-db man-pages texinfo networkmanager xterm vim
@@ -75,13 +75,13 @@ echo "LANG=en_US.UTF-8" > /etc/locale.conf
 echo "KEYMAP=us" > /etc/vconsole.conf
 
 echo "Hostname: "
-read hostname
-echo $hostname > /etc/hostname
+read HOSTNAME
+echo $HOSTNAME > /etc/hostname
 echo "127.0.0.1       localhost" >> /etc/hosts
 echo "::1             localhost" >> /etc/hosts
-echo "127.0.1.1       $hostname" >> /etc/hosts
+echo "127.0.1.1       $HOSTNAME" >> /etc/hosts
 
-mkinitcpio -P
+#mkinitcpio -P
 
 passwd
 
@@ -92,8 +92,8 @@ grub-mkconfig -o /boot/grub/grub.cfg
 systemctl enable NetworkManager
 
 # create user
-read -p "create new user: " username
-useradd -m -g users -G audio,video,network,storage,rfkill,wheel -s /bin/bash $username
-passwd $username
+read -p "create new user: " USRNAME
+useradd -m -g users -G audio,video,network,storage,rfkill,wheel -s /bin/bash $USRNAME
+passwd $USRNAME
 EDITOR=vim visudo
 exit
