@@ -56,23 +56,14 @@ xdg-user-dirs-update
 
 sed -i "s/^#greeter-hide-users=false$/greeter-hide-users=false/" /etc/lightdm/lightdm.conf
 
-
-
-
-
-
-
-
-
 # install qemu/kvm
 read -p "install qemu/kvm? [y/N] " VM
 if [[ $VM = "y" ]]; then
   pacman -S qemu dhclient openbsd-netcat virt-viewer libvirt dnsmasq dmidecode ebtables virt-install virt-manager bridge-utils edk2-ovmf
   systemctl enable libvirtd --now
-  mkdir ~/.config/libvirt
-  sudo cp -rv /etc/libvirt/libvirt.conf ~/.config/libvirt/
-  read -p "user: " USER
-  chown $USER:wheel ~/.config/libvirt/libvirt.conf
+  mkdir $HOME/.config/libvirt
+  sudo cp -rv /etc/libvirt/libvirt.conf $HOME/.config/libvirt/
+  chown $USER:wheel $HOME/.config/libvirt/libvirt.conf
   virsh net-autostart default
 fi
 
