@@ -63,7 +63,7 @@ if [[ $VM = "y" ]]; then
   systemctl enable libvirtd --now
   mkdir /home/$SUDO_USER/.config/libvirt
   sudo cp -rv /etc/libvirt/libvirt.conf /home/$SUDO_USER/.config/libvirt/
-  chown $USER:wheel /home/$SUDO_USER/.config/libvirt/libvirt.conf
+  chown $SUDO_USER:wheel /home/$SUDO_USER/.config/libvirt/libvirt.conf
   virsh net-autostart default
 fi
 
