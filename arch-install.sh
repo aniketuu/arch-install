@@ -86,13 +86,13 @@ mkinitcpio -P
 passwd
 
 pacman --noconfirm -S grub efibootmgr
-grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 grub-mkconfig -o /boot/grub/grub.cfg
 
 systemctl enable NetworkManager
 
 # create user
-read username
+read -p "create new user: " username
 useradd -m -g users -G audio,video,network,storage,rfkill,wheel -s /bin/bash $username
 passwd $username
 EDITOR=vim visudo
