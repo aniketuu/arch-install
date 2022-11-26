@@ -56,15 +56,13 @@ xdg-user-dirs-update
 
 sed -i "s/^#greeter-hide-users=false$/greeter-hide-users=false/" /etc/lightdm/lightdm.conf
 
-# install yay
-mkdir /tmp/yay
-git clone https://aur.archlinux.org/yay-git.git /tmp/yay/
-cd /tmp/yay
-makepkg
-echo ""
-ls
-read -p "yay: " YAY
-pacman -U --noconfirm $YAY 
+
+
+
+
+
+
+
 
 # install qemu/kvm
 read -p "install qemu/kvm? [y/N] " VM
