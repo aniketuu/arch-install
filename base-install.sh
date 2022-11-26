@@ -46,7 +46,7 @@ fi
 echo ""
 pacman -S --noconfirm noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-iosevka-nerd ttf-hack-nerd ttf-jetbrains-mono ttf-font-awesome \
   ffmpeg mpv feh zathura zathura-pdf-mupdf firefox kitty qbittorrent \
-  zip gzip unzip xdotool bluez bluez-utils git go pipewire pipewire-pulse xdg-user-dirs numlockx brightnessctl sed \
+  zip gzip unzip xdotool bluez bluez-utils git pulseaudio pulseaudio-bluetooth pavucontrol xdg-user-dirs numlockx brightnessctl sed \
   bash-completion htop neofetch \
   xfce4 xfce4-goodies lightdm lightdm-gtk-greeter
 
