@@ -39,7 +39,7 @@ pacman -S --noconfirm xorg-server xorg-xinit xorg-apps xf86-video-intel mesa $LI
 read -p "using nvidia? [y/N] " NVI
 if [[ $NVI = "y" ]]; then
   echo ""
-  pacman -S --noconfirm nvidia nvidia-utils $LIB32_NVI_UTLS nvidia-prime nvidia-settings
+  pacman -S nvidia nvidia-utils $LIB32_NVI_UTLS nvidia-prime nvidia-settings
 fi
 
 #steam
