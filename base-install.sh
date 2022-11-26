@@ -44,7 +44,7 @@ fi
 # install other stuff
 echo ""
 pacman -S --noconfirm noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-iosevka-nerd ttf-hack-nerd ttf-jetbrains-mono ttf-font-awesome \
-  ffmpeg mpv feh zathura zathura-pdf-mupdf firefox kitty \
+  ffmpeg mpv feh zathura zathura-pdf-mupdf firefox kitty qbittorrent \
   zip gzip unzip gunzip xdotool bluez bluez-utils git go pipewire pipewire-pulse xdg-user-dirs numlockx brightnessctl sed \
   bash-completion htop neofetch \
   xfce4 xfce4-goodies lightdm lightdm-gtk-greeter
