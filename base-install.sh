@@ -33,7 +33,7 @@ if [[ $BIT32 = "y" ]]; then
 fi
 
 # display server
-pacman -S --noconfirm xorg-server xorg-xinit xorg-apps xf86-video-intel mesa $LIB32_MESA
+pacman -S --noconfirm xorg-server xorg-xinit xorg-apps xf86-video-intel mesa $LIB32_MESA mesa-utils
 
 # nvidia
 read -p "using nvidia? [y/N] " NVI
@@ -42,9 +42,17 @@ if [[ $NVI = "y" ]]; then
   pacman -S --noconfirm nvidia nvidia-utils $LIB32_NVI_UTLS nvidia-prime nvidia-settings
 fi
 
+#steam
+echo ""
+read -p "want steam? [y/N] " STM
+if [[ $STM = "y" ]]; then
+  echo ""
+  pacman -S steam
+fi
+
 # install other stuff
 echo ""
-pacman -S --noconfirm noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-iosevka-nerd ttf-hack-nerd ttf-jetbrains-mono ttf-font-awesome \
+pacman -S --noconfirm noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-liberation ttf-iosevka-nerd ttf-hack-nerd ttf-jetbrains-mono ttf-font-awesome \
   ffmpeg mpv feh zathura zathura-pdf-mupdf firefox kitty qbittorrent \
   zip gzip unzip xdotool bluez bluez-utils git pulseaudio pulseaudio-bluetooth pavucontrol xdg-user-dirs numlockx brightnessctl sed \
   bash-completion htop neofetch \
